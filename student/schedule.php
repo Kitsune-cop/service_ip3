@@ -12,7 +12,7 @@ $params = array(
     'id' => $_GET['id']
 );
 
-$sql = "SELECT * FROM student_has_class INNER JOIN advicers ON student_has_class.school_year = advicers.school_year INNER JOIN teacher ON advicers.teacher_id = teacher.teacher_id WHERE student_has_class.student_id = :id AND student_has_class.school_year = '2019' ";
+$sql = "SELECT * FROM student_has_class INNER JOIN time_table ON student_has_class.school_year = time_table.school_year INNER JOIN enroll_subject ON time_table.enroll_subject_id = enroll_subject.enroll_subject_id WHERE student_has_class.student_id = :id AND student_has_class.school_year = '2019' ";
 $statement = $conn->prepare($sql);
 $statement->execute($params);
 

@@ -9,14 +9,12 @@ require_once('../response.php');
 $response = new Response();
 
 $params = array(
-    'grade' => $_GET['grade'],
-    'room' => $GET_['room']
+    'id' => $_GET['id']
 );
 
-$sql = "SELECT * FROM student_has_class 
-INNER JOIN time_table ON student_has_class.school_year = time_table.school_year 
-INNER JOIN enroll_subject ON time_table.enroll_subject_id = enroll_subject.enroll_subject_id 
-WHERE time_table.grade = :grade AND time_table.room = :room AND student_has_class.school_year = '2019' ";
+$sql = "SELECT * FROM score
+INNER JOIN subject ON score.subject_id = subject.subject_id
+WHERE score.student_id = :id AND score.school_year = '2019' ";
 $statement = $conn->prepare($sql);
 $statement->execute($params);
 

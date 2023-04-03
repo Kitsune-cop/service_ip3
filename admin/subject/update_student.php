@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT");
 header("Access-Control-Allow-Headers: Content-Type"); 
 
 require_once "../../connect.php";
-$request = json_decode(file_get_contents("php://input"), true);
+$request = json_decode(file_get_contents("php://input"), true, JSON_UNESCAPED_UNICODE);
 try {
 
 $sql = $conn->prepare("UPDATE `subject` SET `subject_name`= :subject_name,`course_description_th`= :course_description_th,`course_description_en`= :course_description_en WHERE `subject_id`= :subject_id");

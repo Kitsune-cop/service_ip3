@@ -15,7 +15,7 @@ $params = array(
 
 $sql = "SELECT * FROM work INNER JOIN enroll_subject ON work.enroll_subject_id = enroll_subject.enroll_subject_id
 INNER JOIN enroll ON enroll_subject.enroll_subject_id = enroll.enroll_subject_id
-WHERE enroll_subject.teacher_id = :id AND work.enroll_subject_id = enroll_subject.enroll_subject_id AND work.deadline >= :date";
+WHERE enroll_subject.teacher_id = :id AND work.enroll_subject_id = enroll_subject.enroll_subject_id AND work.deadline >= :date GROUP BY work.work_id ORDER BY work.deadline ASC";
 $statement = $conn->prepare($sql);
 $statement->execute($params);
 

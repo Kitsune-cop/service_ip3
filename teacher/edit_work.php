@@ -20,7 +20,7 @@ $params_for_insert = array(
 );
 print_r($request);
 try {
-$sql = "SELECT * FROM enroll JOIN enroll_subject ON enroll.enroll_subject_id = enroll_subject.enroll_subject_id WHERE enroll_subject.subject_id = :subject_id AND enroll.grade = :grade AND enroll.room = :room";
+$sql = "SELECT * FROM enroll INNER JOIN enroll_subject ON enroll.enroll_subject_id = enroll_subject.enroll_subject_id  WHERE enroll_subject.subject_id = :subject_id AND enroll.grade = :grade AND enroll.room = :room";
 $statement = $conn->prepare($sql);
 $statement->execute($params_for_select);
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);

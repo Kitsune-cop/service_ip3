@@ -9,12 +9,11 @@ require_once('../response.php');
 $response = new Response();
 
 $params = array(
-    'id' => $_GET['id'],
+    'tb_id' => $_GET['tb_id'],
 );
 
-$sql = "SELECT * FROM work INNER JOIN enroll_subject ON work.enroll_subject_id = enroll_subject.enroll_subject_id
-INNER JOIN enroll ON enroll_subject.enroll_subject_id = enroll.enroll_subject_id INNER JOIN subject ON enroll_subject.subject_id = subject.subject_id
-WHERE work.work_id = :id";
+$sql = "SELECT * FROM time_table INNER JOIN enroll_subject ON time_table.enroll_subject_id = enroll_subject.enroll_subject_id INNER JOIN subject ON enroll_subject.subject_id = subject.subject_id
+WHERE time_table.time_table_id = :tb_id ";
 $statement = $conn->prepare($sql);
 $statement->execute($params);
 

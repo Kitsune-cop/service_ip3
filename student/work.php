@@ -10,12 +10,14 @@ $response = new Response();
 
 $params = array(
     'id' => $_GET['id'],
+    'sc_yr' => $GET['school_year'],
     'date' => date("Y-m-d")
 );
 
-$sql = "SELECT * FROM work INNER JOIN enroll_subject ON work.enroll_subject_id = enroll_subject.enroll_subject_id
-INNER JOIN enroll ON enroll_subject.enroll_subject_id = enroll.enroll_subject_id
-WHERE enroll.student_id = :id AND work.deadline >= :date ORDER BY work.deadline ASC";
+$sql = "SELECT * FROM time_table
+INNER JOIN enroll_subject on time_table.enroll_subject_id = enroll_subject.enroll_subject_id
+INNER JOIN work ON enroll_subject.enroll_subject_id = work.enroll_subject_id
+WHERE school_year = :sc_yr AND teacher_id = :id AND work.deadline >= :date ORDER BY work.deadline ASC";
 $statement = $conn->prepare($sql);
 $statement->execute($params);
 

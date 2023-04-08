@@ -22,7 +22,7 @@ $statement = $conn->prepare($sql);
 $statement->execute($params);
 
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+echo "test";
 if (count($result)) {
     $response->success($result);
 } else {

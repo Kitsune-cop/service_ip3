@@ -7,10 +7,9 @@ require_once('../connect.php');
 require_once('../response.php');
 
 $response = new Response();
-
 $params = array(
     'id' => $_GET['id'],
-    'sc_yr' => $GEt['school_yaer'],
+    'sc_yr' => $_GET['school_year'],
     'date' => date("Y-m-d")
 );
 
